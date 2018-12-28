@@ -25,7 +25,9 @@ namespace CricApp.Controllers
             var webClient = new WebClient();
             webClient.Headers.Add("apikey", _configuration["cricApiKey"]);
             var apiKey = _configuration["cricApiKey"];
-            var query = new Uri("https://cricapi.com/api/playerStats?apikey=" + $"{apiKey}&pid={id}");
+            var baseUrl = _configuration["cricApiBaseUrl"];
+
+            var query = new Uri(baseUrl + "playerStats?apikey=" + $"{apiKey}&pid={id}");
 
             var json = webClient.DownloadString(query);
 
