@@ -15,6 +15,8 @@ namespace CricApp
 {
     public class Startup
     {
+        private string _cricApiKey = null;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -25,6 +27,8 @@ namespace CricApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            _cricApiKey = Configuration["cricApiKey"];
+
             // Add framework services.
             services
                 .AddMvc()
@@ -35,6 +39,7 @@ namespace CricApp
 
             // Add Kendo UI services to the services container
             services.AddKendo();
+            services.AddSingleton<IConfiguration>(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

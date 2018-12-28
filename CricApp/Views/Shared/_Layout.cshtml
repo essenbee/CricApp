@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -63,6 +63,8 @@
         </footer>
     </div>
 
+    @Html.Kendo().DeferredScripts()
+    
     @RenderSection("scripts", required: false)
     <script>
         $(document).ready(function () {
