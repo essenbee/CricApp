@@ -5,9 +5,11 @@
 }
 
 <h2>Player Statistics</h2>
-
 <div>
-    <h4> @Html.DisplayFor(model => model.FullName)</h4>
+    <span class="text-muted">Correct as of @Html.DisplayFor(model => model.Provider.PubDate)</span>
+</div>
+<div>
+    <h4> @Html.DisplayFor(model => model.Name)</h4>
     <img src="@Model.ImageUrl" />
     <hr />
     <dl class="dl-horizontal">
@@ -27,13 +29,7 @@
             @Html.DisplayNameFor(model => model.CurrentAge)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.CurrentAge)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Born)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Born)
+            @Html.DisplayFor(model => model.CurrentAge) (<b>@Html.DisplayNameFor(model => model.Born)</b>: @Html.DisplayFor(model => model.Born))
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.PlayingRole)
@@ -67,4 +63,52 @@
         </dd>
     </dl>
 </div>
+<div class="wide">
+    <div>
+        <kendo-tabstrip name="role-tabstrip">
+            <popup-animation>
+                <open effects="fade:in" />
+            </popup-animation>
+            <items>
+                <tabstrip-item text="Batting" selected="true">
+                    <content>
+                        <kendo-tabstrip name="batting-tabstrip">
+                            <items>
+                                <tabstrip-item text="Tests" selected="true">
+                                    <content>
+                                        <partial name="_BattingView" model="Model.Data.Batting.Tests" />
+                                    </content>
+                                </tabstrip-item>
+                                <tabstrip-item text="ODIs">
+                                    <content>
+                                        <partial name="_BattingView" model="Model.Data.Batting.OdIs" />
+                                    </content>
+                                </tabstrip-item>
+                                <tabstrip-item text="T20Is">
+                                    <content>
+                                        <partial name="_BattingView" model="Model.Data.Batting.T20Is" />
+                                    </content>
+                                </tabstrip-item>
+                                <tabstrip-item text="1st Class">
+                                    <content>
+                                        <partial name="_BattingView" model="Model.Data.Batting.FirstClass" />
+                                    </content>
+                                </tabstrip-item>
+                                <tabstrip-item text="List A">
+                                    <content>
+                                        <partial name="_BattingView" model="Model.Data.Batting.ListA" />
+                                    </content>
+                                </tabstrip-item>
+                            </items>
+                        </kendo-tabstrip>
+                    </content>
+                </tabstrip-item>
+                <tabstrip-item text="Bowling">
+                    <content>
+
+                    </content>
+                </tabstrip-item>
+            </items>
+        </kendo-tabstrip>
+    </div>
 

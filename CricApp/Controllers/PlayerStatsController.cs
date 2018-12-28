@@ -18,7 +18,7 @@ namespace CricApp.Controllers
 
         public IActionResult Index(string pid)
         {
-            var err = new PlayerStatsViewModel { FullName = "Not Found" };
+            var err = new PlayerStatsViewModel { Name = "Not Found", FullName = "-" };
             var result = _api.GetStats(pid);
 
             if (result is OkObjectResult)

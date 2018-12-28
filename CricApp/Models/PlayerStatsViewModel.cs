@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -18,15 +19,19 @@ namespace CricApp.Models
         public Uri ImageUrl { get; set; }
 
         [JsonProperty("battingStyle")]
+        [Display(Name = "Batting Style")]
         public string BattingStyle { get; set; }
 
         [JsonProperty("bowlingStyle")]
+        [Display(Name = "Bowling Style")]
         public string BowlingStyle { get; set; }
 
         [JsonProperty("majorTeams")]
+        [Display(Name = "Major Teams")]
         public string MajorTeams { get; set; }
 
         [JsonProperty("currentAge")]
+        [Display(Name = "Current Age")]
         public string CurrentAge { get; set; }
 
         [JsonProperty("born")]
@@ -42,6 +47,7 @@ namespace CricApp.Models
         public string Country { get; set; }
 
         [JsonProperty("playingRole")]
+        [Display(Name = "Playing Role")]
         public string PlayingRole { get; set; }
 
         [JsonProperty("v")]
@@ -73,9 +79,11 @@ namespace CricApp.Models
     public partial class Batting
     {
         [JsonProperty("listA")]
+        [Display(Name = "List A")]
         public Stats ListA { get; set; }
 
         [JsonProperty("firstClass")]
+        [Display(Name = "1st Calss")]
         public Stats FirstClass { get; set; }
 
         [JsonProperty("T20Is")]
@@ -144,9 +152,11 @@ namespace CricApp.Models
     public partial class Bowling
     {
         [JsonProperty("listA")]
+        [Display(Name = "List A")]
         public Dictionary<string, string> ListA { get; set; }
 
         [JsonProperty("firstClass")]
+        [Display(Name = "1st Class")]
         public Dictionary<string, string> FirstClass { get; set; }
 
         [JsonProperty("T20Is")]

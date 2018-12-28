@@ -1,0 +1,32 @@
+﻿
+@model CricApp.Models.Stats
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">@Html.DisplayNameFor(model => model.Mat)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Inns)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Runs)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Ave)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Fifties)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Hundreds)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Fours)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Sixes)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Hs)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">@Html.DisplayFor(model => model.Mat)</th>
+            <td>@Html.DisplayFor(model => model.Inns)</td>
+            <td>@Html.DisplayFor(model => model.Runs)</td>
+            <td>@Html.DisplayFor(model => model.Ave)</td>
+            <td>@Html.DisplayFor(model => model.Fifties)</td>
+            <td>@Html.DisplayFor(model => model.Hundreds)</td>
+            <td>@Html.DisplayFor(model => model.Fours)</td>
+            <td>@Html.DisplayFor(model => model.Sixes)</td>
+            <td>@Html.DisplayFor(model => model.Hs)</td>
+        </tr>
+    </tbody>
+</table>
+
