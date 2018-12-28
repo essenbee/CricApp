@@ -1,0 +1,70 @@
+﻿@model CricApp.Models.PlayerStatsViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Player Statistics</h2>
+
+<div>
+    <h4> @Html.DisplayFor(model => model.FullName)</h4>
+    <img src="@Model.ImageUrl" />
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentAge)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CurrentAge)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Born)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Born)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PlayingRole)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PlayingRole)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Profile)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Profile)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BattingStyle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BattingStyle)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BowlingStyle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BowlingStyle)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MajorTeams)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MajorTeams)
+        </dd>
+    </dl>
+</div>
+
