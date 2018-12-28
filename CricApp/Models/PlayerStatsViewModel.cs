@@ -83,7 +83,7 @@ namespace CricApp.Models
         public Stats ListA { get; set; }
 
         [JsonProperty("firstClass")]
-        [Display(Name = "1st Calss")]
+        [Display(Name = "1st Class")]
         public Stats FirstClass { get; set; }
 
         [JsonProperty("T20Is")]
@@ -108,10 +108,12 @@ namespace CricApp.Models
 
         [JsonProperty("St")]
         [JsonConverter(typeof(ParseStringConverter))]
+        [Display(Name = "ST")]
         public long St { get; set; }
 
         [JsonProperty("Ct")]
         [JsonConverter(typeof(ParseStringConverter))]
+        [Display(Name = "CT")]
         public long Ct { get; set; }
 
         [JsonProperty("6s")]
@@ -121,15 +123,18 @@ namespace CricApp.Models
         public string Fours { get; set; }
 
         [JsonProperty("SR")]
+        [Display(Name = "SR")]
         public string Sr { get; set; }
 
         [JsonProperty("BF")]
+        [Display(Name = "BF")]
         public string Bf { get; set; }
 
         [JsonProperty("Ave")]
         public string Ave { get; set; }
 
         [JsonProperty("HS")]
+        [Display(Name = "HS")]
         public string Hs { get; set; }
 
         [JsonProperty("Runs")]
@@ -138,6 +143,7 @@ namespace CricApp.Models
 
         [JsonProperty("NO")]
         [JsonConverter(typeof(ParseStringConverter))]
+        [Display(Name = "NO")]
         public long No { get; set; }
 
         [JsonProperty("Inns")]
@@ -146,6 +152,7 @@ namespace CricApp.Models
 
         [JsonProperty("Mat")]
         [JsonConverter(typeof(ParseStringConverter))]
+        [Display(Name = "Matches")]
         public long Mat { get; set; }
     }
 

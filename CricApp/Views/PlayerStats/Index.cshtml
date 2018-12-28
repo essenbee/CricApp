@@ -79,12 +79,12 @@
                                         <partial name="_BattingView" model="Model.Data.Batting.Tests" />
                                     </content>
                                 </tabstrip-item>
-                                <tabstrip-item text="ODIs">
+                                <tabstrip-item text="ODI">
                                     <content>
                                         <partial name="_BattingView" model="Model.Data.Batting.OdIs" />
                                     </content>
                                 </tabstrip-item>
-                                <tabstrip-item text="T20Is">
+                                <tabstrip-item text="T20I">
                                     <content>
                                         <partial name="_BattingView" model="Model.Data.Batting.T20Is" />
                                     </content>
@@ -105,7 +105,35 @@
                 </tabstrip-item>
                 <tabstrip-item text="Bowling">
                     <content>
-
+                        <kendo-tabstrip name="bowling-tabstrip">
+                            <items>
+                                <tabstrip-item text="Tests" selected="true">
+                                    <content>
+                                        @*<partial name="_BattingView" model="Model.Data.Batting.Tests" />*@
+                                    </content>
+                                </tabstrip-item>
+                                <tabstrip-item text="ODI">
+                                    <content>
+                                        @*<partial name="_BattingView" model="Model.Data.Batting.OdIs" />*@
+                                    </content>
+                                </tabstrip-item>
+                                <tabstrip-item text="T20I">
+                                    <content>
+                                        @*<partial name="_BattingView" model="Model.Data.Batting.T20Is" />*@
+                                    </content>
+                                </tabstrip-item>
+                                <tabstrip-item text="1st Class">
+                                    <content>
+                                        @*<partial name="_BattingView" model="Model.Data.Batting.FirstClass" />*@
+                                    </content>
+                                </tabstrip-item>
+                                <tabstrip-item text="List A">
+                                    <content>
+                                        @*<partial name="_BattingView" model="Model.Data.Batting.ListA" />*@
+                                    </content>
+                                </tabstrip-item>
+                            </items>
+                        </kendo-tabstrip>
                     </content>
                 </tabstrip-item>
             </items>
