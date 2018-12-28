@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
-using CricApp.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
 
 namespace CricApp.Controllers
 {
@@ -24,7 +18,9 @@ namespace CricApp.Controllers
 
         // GET
         [HttpGet("{id}")]
-        public PlayerStatsViewModel GetStats(string id)
+        [ProducesResponseType(200, Type = typeof(string))]
+        [ProducesResponseType(404)]
+        public IActionResult GetStats(string id)
         {
             var webClient = new WebClient();
             webClient.Headers.Add("apikey", _configuration["cricApiKey"]);
@@ -33,14 +29,12 @@ namespace CricApp.Controllers
 
             var json = webClient.DownloadString(query);
 
-            var playerStats = JsonConvert.DeserializeObject<PlayerStatsViewModel>(json);
-
-            if (playerStats is null)
+            if (json is null)
             {
-                return null;
+                return NotFound();
             }
 
-            return playerStats;
+            return Ok(json);
         }
     }
 }

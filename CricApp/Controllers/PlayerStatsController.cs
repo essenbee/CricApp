@@ -1,6 +1,4 @@
-﻿using System;
-using System.Net;
-using CricApp.Models;
+﻿using CricApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -10,25 +8,27 @@ namespace CricApp.Controllers
     public class PlayerStatsController : Controller
     {
         private IConfiguration _configuration;
+        private CricApiController _api;
 
-        public PlayerStatsController(IConfiguration Configuration)
+        public PlayerStatsController(IConfiguration Configuration, CricApiController api)
         {
             _configuration = Configuration;
+            _api = api;
         }
 
         public IActionResult Index(string pid)
         {
-            var webClient = new WebClient();
-            webClient.Headers.Add("apikey", _configuration["cricApiKey"]);
-            var apiKey = _configuration["cricApiKey"];
-            var query = new Uri("https://cricapi.com/api/playerStats?apikey=" + $"{apiKey}&pid={pid}");
+            var err = new PlayerStatsViewModel { FullName = "Not Found" };
+            var result = _api.GetStats(pid);
 
-            var json = webClient.DownloadString(query);
+            if (result is OkObjectResult)
+            {
+                var ok = result as OkObjectResult;
+                var playerStats = JsonConvert.DeserializeObject<PlayerStatsViewModel>(ok.Value.ToString());
+                return View(playerStats);
+            }
 
-            var playerStats = JsonConvert.DeserializeObject<PlayerStatsViewModel>(json);
-
-
-            return View(playerStats);
+            return View(err);
         }
     }
 }
