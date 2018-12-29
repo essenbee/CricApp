@@ -99,22 +99,20 @@ namespace CricApp.Models
     public partial class BattingStats
     {
         [JsonProperty("50")]
-        [JsonConverter(typeof(ParseStringConverter))]
-        public long Fifties { get; set; }
+        [Display(Name = "50s")]
+        public string Fifties { get; set; }
 
         [JsonProperty("100")]
-        [JsonConverter(typeof(ParseStringConverter))]
-        public long Hundreds { get; set; }
+        [Display(Name = "100s")]
+        public string Hundreds { get; set; }
 
         [JsonProperty("St")]
-        [JsonConverter(typeof(ParseStringConverter))]
         [Display(Name = "ST")]
-        public long St { get; set; }
+        public string St { get; set; }
 
         [JsonProperty("Ct")]
-        [JsonConverter(typeof(ParseStringConverter))]
         [Display(Name = "CT")]
-        public long Ct { get; set; }
+        public string Ct { get; set; }
 
         [JsonProperty("6s")]
         public string Sixes { get; set; }
@@ -138,22 +136,18 @@ namespace CricApp.Models
         public string Hs { get; set; }
 
         [JsonProperty("Runs")]
-        [JsonConverter(typeof(ParseStringConverter))]
-        public long Runs { get; set; }
+        public string Runs { get; set; }
 
         [JsonProperty("NO")]
-        [JsonConverter(typeof(ParseStringConverter))]
         [Display(Name = "NO")]
-        public long No { get; set; }
+        public string No { get; set; }
 
         [JsonProperty("Inns")]
-        [JsonConverter(typeof(ParseStringConverter))]
-        public long Inns { get; set; }
+        public string Inns { get; set; }
 
         [JsonProperty("Mat")]
-        [JsonConverter(typeof(ParseStringConverter))]
         [Display(Name = "Matches")]
-        public long Mat { get; set; }
+        public string Mat { get; set; }
     }
 
     public partial class BowlingStats
