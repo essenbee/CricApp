@@ -1,38 +1,39 @@
 ﻿
 @model CricApp.Models.BattingStats
 
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">@Html.DisplayNameFor(model => model.Mat)</th>
-            <th scope="col">@Html.DisplayNameFor(model => model.Inns)</th>
-            <th scope="col">@Html.DisplayNameFor(model => model.No)</th>
-            <th scope="col">@Html.DisplayNameFor(model => model.Runs)</th>
-            <th scope="col">@Html.DisplayNameFor(model => model.Hs)</th>
-            <th scope="col">@Html.DisplayNameFor(model => model.Ave)</th>
-            <th scope="col">@Html.DisplayNameFor(model => model.Bf)</th> @*Balls faced*@
-            <th scope="col">@Html.DisplayNameFor(model => model.Sr)</th>
-            <th scope="col">@Html.DisplayNameFor(model => model.Fifties)</th>
-            <th scope="col">@Html.DisplayNameFor(model => model.Hundreds)</th>
-            <th scope="col">@Html.DisplayNameFor(model => model.Fours)</th>
-            <th scope="col">@Html.DisplayNameFor(model => model.Sixes)</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">@Html.DisplayFor(model => model.Mat)</th>
-            <td>@Html.DisplayFor(model => model.Inns)</td>
-            <td>@Html.DisplayFor(model => model.No)</td>
-            <td>@Html.DisplayFor(model => model.Runs)</td>
-            <td>@Html.DisplayFor(model => model.Hs)</td>
-            <td>@Html.DisplayFor(model => model.Ave)</td>
-            <td>@Html.DisplayFor(model => model.Bf)</td>
-            <td>@Html.DisplayFor(model => model.Sr)</td>
-            <td>@Html.DisplayFor(model => model.Fifties)</td>
-            <td>@Html.DisplayFor(model => model.Hundreds)</td>
-            <td>@Html.DisplayFor(model => model.Fours)</td>
-            <td>@Html.DisplayFor(model => model.Sixes)</td>
-        </tr>
-    </tbody>
-</table>
-
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">@Html.DisplayNameFor(model => model.Mat)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Inns)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.No)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Runs)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Hs)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Ave)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Bf)</th> @*Balls faced*@
+                <th scope="col">@Html.DisplayNameFor(model => model.Sr)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Fifties)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Hundreds)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Fours)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Sixes)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">@Html.DisplayFor(model => model.Mat)</th>
+                <td>@Html.DisplayFor(model => model.Inns)</td>
+                <td>@Html.DisplayFor(model => model.No)</td>
+                <td>@Html.DisplayFor(model => model.Runs)</td>
+                <td>@Html.DisplayFor(model => model.Hs)</td>
+                <td>@Html.DisplayFor(model => model.Ave)</td>
+                <td>@Html.DisplayFor(model => model.Bf)</td>
+                <td>@Html.DisplayFor(model => model.Sr)</td>
+                <td>@Html.DisplayFor(model => model.Fifties)</td>
+                <td>@Html.DisplayFor(model => model.Hundreds)</td>
+                <td>@Html.DisplayFor(model => model.Fours)</td>
+                <td>@Html.DisplayFor(model => model.Sixes)</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
