@@ -5,149 +5,146 @@
 }
 
 <h2>Player Statistics</h2>
-<div>
-    <span class="text-muted small">Near-live data from CricApi @Html.DisplayFor(model => model.Provider.PubDate)</span>
-</div>
-<div>
-    <h4> @Html.DisplayFor(model => model.Name)</h4>
     <div class="row">
         <div class="col-xs-4 col-md-3 placeholder">
-            <img class="img-responsive" alt="Picture of @Html.DisplayFor(model => model.Name)" src="@Model.ImageUrl">
+            <section class="well">
+                <img class="img-responsive center-block" alt="Picture of @Html.DisplayFor(model => model.Name)" src="@Model.ImageUrl">
+                <h4 class="ra-well-title text-center"> @Html.DisplayFor(model => model.Name)</h4>
+                <h5 class="text-muted text-center">@Html.DisplayFor(model => model.PlayingRole)</h5>
+            </section>
         </div>
         <div class="col-xs-12 col-md-9">
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Name)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Name) (@Html.DisplayFor(model => model.FullName))
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.Country)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Country)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.CurrentAge)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.CurrentAge) (<b>@Html.DisplayNameFor(model => model.Born)</b> @Html.DisplayFor(model => model.Born))
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.PlayingRole)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.PlayingRole)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.Profile)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Profile)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.BattingStyle)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.BattingStyle)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.BowlingStyle)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.BowlingStyle)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.MajorTeams)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.MajorTeams)
-                </dd>
-            </dl>
+            <section class="well">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Name) (@Html.DisplayFor(model => model.FullName))
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Country)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Country)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CurrentAge)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.CurrentAge) (<b>@Html.DisplayNameFor(model => model.Born)</b> @Html.DisplayFor(model => model.Born))
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Profile)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Profile)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.BattingStyle)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.BattingStyle)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.BowlingStyle)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.BowlingStyle)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.MajorTeams)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.MajorTeams)
+                    </dd>
+                </dl>
+            </section>
         </div>
     </div>
-</div>
+
 <div class="wide">
     <div>
-        <kendo-tabstrip name="role-tabstrip">
-            <popup-animation>
-                <open effects="fade:in" />
-            </popup-animation>
-            <items>
-                <tabstrip-item text="Batting" selected="true">
-                    <content>
-                        <kendo-tabstrip name="batting-tabstrip">
-                            <popup-animation>
-                                <open effects="fade:in" />
-                            </popup-animation>
-                            <items>
-                                <tabstrip-item text="Tests" selected="true">
-                                    <content>
-                                        <partial name="_BattingView" model="Model.Data.Batting.Tests" />
-                                    </content>
-                                </tabstrip-item>
-                                <tabstrip-item text="ODI">
-                                    <content>
-                                        <partial name="_BattingView" model="Model.Data.Batting.OdIs" />
-                                    </content>
-                                </tabstrip-item>
-                                <tabstrip-item text="T20I">
-                                    <content>
-                                        <partial name="_BattingView" model="Model.Data.Batting.T20Is" />
-                                    </content>
-                                </tabstrip-item>
-                                <tabstrip-item text="1st Class">
-                                    <content>
-                                        <partial name="_BattingView" model="Model.Data.Batting.FirstClass" />
-                                    </content>
-                                </tabstrip-item>
-                                <tabstrip-item text="List A">
-                                    <content>
-                                        <partial name="_BattingView" model="Model.Data.Batting.ListA" />
-                                    </content>
-                                </tabstrip-item>
-                            </items>
-                        </kendo-tabstrip>
-                    </content>
-                </tabstrip-item>
-                <tabstrip-item text="Bowling">
-                    <content>
-                        <kendo-tabstrip name="bowling-tabstrip">
-                            <popup-animation>
-                                <open effects="fade:in" />
-                            </popup-animation>
-                            <items>
-                                <tabstrip-item text="Tests" selected="true">
-                                    <content>
-                                        <partial name="_BowlingView" model="Model.Data.Bowling.Tests" />
-                                    </content>
-                                </tabstrip-item>
-                                <tabstrip-item text="ODI">
-                                    <content>
-                                        <partial name="_BowlingView" model="Model.Data.Bowling.OdIs" />
-                                    </content>
-                                </tabstrip-item>
-                                <tabstrip-item text="T20I">
-                                    <content>
-                                        <partial name="_BowlingView" model="Model.Data.Bowling.T20Is" />
-                                    </content>
-                                </tabstrip-item>
-                                <tabstrip-item text="1st Class">
-                                    <content>
-                                        <partial name="_BowlingView" model="Model.Data.Bowling.FirstClass" />
-                                    </content>
-                                </tabstrip-item>
-                                <tabstrip-item text="List A">
-                                    <content>
-                                        <partial name="_BowlingView" model="Model.Data.Bowling.ListA" />
-                                    </content>
-                                </tabstrip-item>
-                            </items>
-                        </kendo-tabstrip>
-                    </content>
-                </tabstrip-item>
-            </items>
-        </kendo-tabstrip>
+        <section class="well">
+            <kendo-tabstrip name="stats-tabstrip">
+                <popup-animation>
+                    <open effects="fade:in" />
+                </popup-animation>
+                <items>
+                    <tabstrip-item text="Batting Statistics" selected="true">
+                        <content>
+                            <kendo-tabstrip name="batting-tabstrip">
+                                <popup-animation>
+                                    <open effects="fade:in" />
+                                </popup-animation>
+                                <items>
+                                    <tabstrip-item text="Tests" selected="true">
+                                        <content>
+                                            <partial name="_BattingView" model="Model.Data.Batting.Tests" />
+                                        </content>
+                                    </tabstrip-item>
+                                    <tabstrip-item text="ODI">
+                                        <content>
+                                            <partial name="_BattingView" model="Model.Data.Batting.OdIs" />
+                                        </content>
+                                    </tabstrip-item>
+                                    <tabstrip-item text="T20I">
+                                        <content>
+                                            <partial name="_BattingView" model="Model.Data.Batting.T20Is" />
+                                        </content>
+                                    </tabstrip-item>
+                                    <tabstrip-item text="1st Class">
+                                        <content>
+                                            <partial name="_BattingView" model="Model.Data.Batting.FirstClass" />
+                                        </content>
+                                    </tabstrip-item>
+                                    <tabstrip-item text="List A">
+                                        <content>
+                                            <partial name="_BattingView" model="Model.Data.Batting.ListA" />
+                                        </content>
+                                    </tabstrip-item>
+                                </items>
+                            </kendo-tabstrip>
+                        </content>
+                    </tabstrip-item>
+                    <tabstrip-item text="Bowling Statistics">
+                        <content>
+                            <kendo-tabstrip name="bowling-tabstrip">
+                                <popup-animation>
+                                    <open effects="fade:in" />
+                                </popup-animation>
+                                <items>
+                                    <tabstrip-item text="Tests" selected="true">
+                                        <content>
+                                            <partial name="_BowlingView" model="Model.Data.Bowling.Tests" />
+                                        </content>
+                                    </tabstrip-item>
+                                    <tabstrip-item text="ODI">
+                                        <content>
+                                            <partial name="_BowlingView" model="Model.Data.Bowling.OdIs" />
+                                        </content>
+                                    </tabstrip-item>
+                                    <tabstrip-item text="T20I">
+                                        <content>
+                                            <partial name="_BowlingView" model="Model.Data.Bowling.T20Is" />
+                                        </content>
+                                    </tabstrip-item>
+                                    <tabstrip-item text="1st Class">
+                                        <content>
+                                            <partial name="_BowlingView" model="Model.Data.Bowling.FirstClass" />
+                                        </content>
+                                    </tabstrip-item>
+                                    <tabstrip-item text="List A">
+                                        <content>
+                                            <partial name="_BowlingView" model="Model.Data.Bowling.ListA" />
+                                        </content>
+                                    </tabstrip-item>
+                                </items>
+                            </kendo-tabstrip>
+                        </content>
+                    </tabstrip-item>
+                </items>
+            </kendo-tabstrip>
+        </section>
     </div>
 </div>
