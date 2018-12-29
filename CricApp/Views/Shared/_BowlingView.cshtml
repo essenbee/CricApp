@@ -1,0 +1,39 @@
+﻿@model CricApp.Models.BowlingStats
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">@Html.DisplayNameFor(model => model.Mat)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Inns)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Balls)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Runs)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Wkts)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Ave)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.FourWkts)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.FiveWkts)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.TenWkts)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Bbi)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Bbm)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Econ)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Sr)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">@Html.DisplayFor(model => model.Mat)</th>
+            <td>@Html.DisplayFor(model => model.Inns)</td>
+            <td>@Html.DisplayFor(model => model.Balls)</td>
+            <td>@Html.DisplayFor(model => model.Runs)</td>
+            <td>@Html.DisplayFor(model => model.Wkts)</td>
+            <td>@Html.DisplayFor(model => model.Ave)</td>
+            <td>@Html.DisplayFor(model => model.FourWkts)</td>
+            <td>@Html.DisplayFor(model => model.FiveWkts)</td>
+            <td>@Html.DisplayFor(model => model.TenWkts)</td>
+            <td>@Html.DisplayFor(model => model.Bbi)</td>
+            <td>@Html.DisplayFor(model => model.Bbm)</td>
+            <td>@Html.DisplayFor(model => model.Econ)</td>
+            <td>@Html.DisplayFor(model => model.Sr)</td>
+        </tr>
+    </tbody>
+</table>
+

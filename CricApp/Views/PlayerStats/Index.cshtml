@@ -1,67 +1,72 @@
 ﻿@model CricApp.Models.PlayerStatsViewModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "PlayerStats";
 }
 
 <h2>Player Statistics</h2>
 <div>
-    <span class="text-muted">Correct as of @Html.DisplayFor(model => model.Provider.PubDate)</span>
+    <span class="text-muted small">Correct as of @Html.DisplayFor(model => model.Provider.PubDate)</span>
 </div>
 <div>
     <h4> @Html.DisplayFor(model => model.Name)</h4>
-    <img src="@Model.ImageUrl" />
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name) (@Html.DisplayFor(model => model.FullName))
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Country)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Country)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CurrentAge)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CurrentAge) (<b>@Html.DisplayNameFor(model => model.Born)</b>: @Html.DisplayFor(model => model.Born))
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.PlayingRole)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.PlayingRole)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Profile)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Profile)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.BattingStyle)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.BattingStyle)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.BowlingStyle)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.BowlingStyle)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.MajorTeams)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.MajorTeams)
-        </dd>
-    </dl>
+    <div class="row">
+        <div class="col-xs-4 col-md-3 placeholder">
+            <img class="img-responsive" alt="200x200" src="@Model.ImageUrl">
+        </div>
+        <div class="col-xs-12 col-md-9">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Name) (@Html.DisplayFor(model => model.FullName))
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Country)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Country)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CurrentAge)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CurrentAge) (<b>@Html.DisplayNameFor(model => model.Born)</b> @Html.DisplayFor(model => model.Born))
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PlayingRole)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.PlayingRole)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Profile)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Profile)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BattingStyle)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.BattingStyle)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BowlingStyle)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.BowlingStyle)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.MajorTeams)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.MajorTeams)
+                </dd>
+            </dl>
+        </div>
+    </div>
 </div>
 <div class="wide">
     <div>
@@ -73,6 +78,9 @@
                 <tabstrip-item text="Batting" selected="true">
                     <content>
                         <kendo-tabstrip name="batting-tabstrip">
+                            <popup-animation>
+                                <open effects="fade:in" />
+                            </popup-animation>
                             <items>
                                 <tabstrip-item text="Tests" selected="true">
                                     <content>
@@ -106,30 +114,33 @@
                 <tabstrip-item text="Bowling">
                     <content>
                         <kendo-tabstrip name="bowling-tabstrip">
+                            <popup-animation>
+                                <open effects="fade:in" />
+                            </popup-animation>
                             <items>
                                 <tabstrip-item text="Tests" selected="true">
                                     <content>
-                                        @*<partial name="_BattingView" model="Model.Data.Batting.Tests" />*@
+                                        <partial name="_BowlingView" model="Model.Data.Bowling.Tests" />
                                     </content>
                                 </tabstrip-item>
                                 <tabstrip-item text="ODI">
                                     <content>
-                                        @*<partial name="_BattingView" model="Model.Data.Batting.OdIs" />*@
+                                        <partial name="_BowlingView" model="Model.Data.Bowling.OdIs" />
                                     </content>
                                 </tabstrip-item>
                                 <tabstrip-item text="T20I">
                                     <content>
-                                        @*<partial name="_BattingView" model="Model.Data.Batting.T20Is" />*@
+                                        <partial name="_BowlingView" model="Model.Data.Bowling.T20Is" />
                                     </content>
                                 </tabstrip-item>
                                 <tabstrip-item text="1st Class">
                                     <content>
-                                        @*<partial name="_BattingView" model="Model.Data.Batting.FirstClass" />*@
+                                        <partial name="_BowlingView" model="Model.Data.Bowling.FirstClass" />
                                     </content>
                                 </tabstrip-item>
                                 <tabstrip-item text="List A">
                                     <content>
-                                        @*<partial name="_BattingView" model="Model.Data.Batting.ListA" />*@
+                                        <partial name="_BowlingView" model="Model.Data.Bowling.ListA" />
                                     </content>
                                 </tabstrip-item>
                             </items>

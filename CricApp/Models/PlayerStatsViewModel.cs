@@ -80,23 +80,23 @@ namespace CricApp.Models
     {
         [JsonProperty("listA")]
         [Display(Name = "List A")]
-        public Stats ListA { get; set; }
+        public BattingStats ListA { get; set; }
 
         [JsonProperty("firstClass")]
         [Display(Name = "1st Class")]
-        public Stats FirstClass { get; set; }
+        public BattingStats FirstClass { get; set; }
 
         [JsonProperty("T20Is")]
-        public Stats T20Is { get; set; }
+        public BattingStats T20Is { get; set; }
 
         [JsonProperty("ODIs")]
-        public Stats OdIs { get; set; }
+        public BattingStats OdIs { get; set; }
 
         [JsonProperty("tests")]
-        public Stats Tests { get; set; }
+        public BattingStats Tests { get; set; }
     }
 
-    public partial class Stats
+    public partial class BattingStats
     {
         [JsonProperty("50")]
         [JsonConverter(typeof(ParseStringConverter))]
@@ -156,24 +156,73 @@ namespace CricApp.Models
         public long Mat { get; set; }
     }
 
+    public partial class BowlingStats
+    {
+        [JsonProperty("10")]
+        [Display(Name = "10 Wkts")]
+        public string TenWkts { get; set; }
+
+        [JsonProperty("5w")]
+        [Display(Name = "5 Wkts")]
+        public string FiveWkts { get; set; }
+
+        [JsonProperty("4w")]
+        [Display(Name = "4 Wkts")]
+        public string FourWkts { get; set; }
+
+        [JsonProperty("Econ")]
+        public string Econ { get; set; }
+
+        [JsonProperty("Ave")]
+        public string Ave { get; set; }
+
+        [JsonProperty("BBM")]
+        [Display(Name = "BBM")]
+        public string Bbm { get; set; }
+
+        [JsonProperty("BBI")]
+        [Display(Name = "BBI")]
+        public string Bbi { get; set; }
+
+        [JsonProperty("Wkts")]
+        public string Wkts { get; set; }
+
+        [JsonProperty("Runs")]
+        public string Runs { get; set; }
+
+        [JsonProperty("Balls")]
+        public string Balls { get; set; }
+
+        [JsonProperty("SR")]
+        [Display(Name = "SR")]
+        public string Sr { get; set; }
+
+        [JsonProperty("Inns")]
+        public string Inns { get; set; }
+
+        [JsonProperty("Mat")]
+        [Display(Name = "Matches")]
+        public string Mat { get; set; }
+    }
+
     public partial class Bowling
     {
         [JsonProperty("listA")]
         [Display(Name = "List A")]
-        public Dictionary<string, string> ListA { get; set; }
+        public BowlingStats ListA { get; set; }
 
         [JsonProperty("firstClass")]
         [Display(Name = "1st Class")]
-        public Dictionary<string, string> FirstClass { get; set; }
+        public BowlingStats FirstClass { get; set; }
 
         [JsonProperty("T20Is")]
-        public Dictionary<string, string> T20Is { get; set; }
+        public BowlingStats T20Is { get; set; }
 
         [JsonProperty("ODIs")]
-        public Dictionary<string, string> OdIs { get; set; }
+        public BowlingStats OdIs { get; set; }
 
         [JsonProperty("tests")]
-        public Dictionary<string, string> Tests { get; set; }
+        public BowlingStats Tests { get; set; }
     }
 
     public partial class Provider
