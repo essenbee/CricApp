@@ -7,6 +7,8 @@ using Dapper;
 using System.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using System.Linq;
+using System;
+using Serilog;
 
 namespace CricApp.Controllers
 {
@@ -24,9 +26,18 @@ namespace CricApp.Controllers
             var sql = @"select CricApiId as Pid, Name, Country, PlayingRole from Players";
             var result = new List<PlayerViewModel>();
 
-            using (var connection = new SqlConnection(_configuration["dbConnStr"]))
+            try
             {
-                result = connection.Query<PlayerViewModel>(sql).ToList();
+                using (var connection = new SqlConnection(_configuration["dbConnStr"]))
+                {
+                    result = connection.QueryAsync<PlayerViewModel>(sql)
+                        .Result
+                        .ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"Players_Read(): {ex.Message}");
             }
 
             var dsResult = result.ToDataSourceResult(request);
