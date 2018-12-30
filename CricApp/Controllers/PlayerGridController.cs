@@ -3,51 +3,31 @@ using Microsoft.AspNetCore.Mvc;
 using Kendo.Mvc.UI;
 using CricApp.Models;
 using Kendo.Mvc.Extensions;
+using Dapper;
+using System.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
+using System.Linq;
 
 namespace CricApp.Controllers
 {
     public class PlayerGridController : Controller
     {
+        private IConfiguration _configuration;
+
+        public PlayerGridController(IConfiguration Configuration, CricApiController api)
+        {
+            _configuration = Configuration;
+        }
+
         public ActionResult Players_Read([DataSourceRequest]DataSourceRequest request)
         {
-            var result = new List<PlayerViewModel>(); //308967
+            var sql = @"select CricApiId as Pid, Name, Country, PlayingRole from Players";
+            var result = new List<PlayerViewModel>();
 
-            var testPlayer = new PlayerViewModel
+            using (var connection = new SqlConnection(_configuration["dbConnStr"]))
             {
-                Pid = 35320,
-                Name = "Sachin Tendulkar",
-                Country = "India",
-                PlayingRole = "Top-order batsman"
-            };
-
-            var testPlayer2 = new PlayerViewModel
-            {
-                Pid = 308967,
-                Name = "Jos Buttler",
-                Country = "England",
-                PlayingRole = "Wicketkeeper batsman"
-            };
-
-            var testPlayer3 = new PlayerViewModel
-            {
-                Pid = 303669,
-                Name = "Joe Root",
-                Country = "England",
-                PlayingRole = "Top-order batsman"
-            };
-
-            var testPlayer4 = new PlayerViewModel
-            {
-                Pid = 8608,
-                Name = "Jimmy Anderson",
-                Country = "England",
-                PlayingRole = "Bowler"
-            };
-
-            result.Add(testPlayer);
-            result.Add(testPlayer2);
-            result.Add(testPlayer3);
-            result.Add(testPlayer4);
+                result = connection.Query<PlayerViewModel>(sql).ToList();
+            }
 
             var dsResult = result.ToDataSourceResult(request);
             return Json(dsResult);
