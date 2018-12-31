@@ -59,22 +59,29 @@
                     .Columns(columns =>
                     {
                         columns.Bound(p => p.Id).Filterable(false).Hidden();
-                        columns.Bound(p => p.Pid).Filterable(false).Title("Player ID");
+                        columns.Bound(p => p.CricApiId).Filterable(false).Title("Player ID");
                         columns.Bound(p => p.Name);
                         columns.Bound(p => p.Country);
                         columns.Bound(p => p.PlayingRole);
+                        columns.Command(command =>
+                        {
+                            command.Edit();
+                        });
                     })
                     .Pageable()
                     .Sortable()
                     .Scrollable()
                     .Filterable()
+                    .Editable(editable => editable.Mode(GridEditMode.PopUp))
                     .Selectable(selectable => selectable.Mode(GridSelectionMode.Single))
                     .HtmlAttributes(new { style = "height:550px;" })
                     .DataSource(dataSource => dataSource
-                    .Ajax()
-                    .Model(model => model.Id(p => p.Pid))
-                    .PageSize(20)
-                    .Read(read => read.Action("Players_Read", "PlayerGrid"))
+                        .Ajax()
+                        .ServerOperation(true)
+                        .Model(model => model.Id(p => p.Id))
+                        .PageSize(20)
+                        .Read(read => read.Action("GetPlayers", "PlayerGrid"))
+                        .Update(update => update.Action("EditPlayer", "PlayerGrid"))
                     )
                     .Deferred()
         )

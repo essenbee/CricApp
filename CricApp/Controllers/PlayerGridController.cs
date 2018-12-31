@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using System.Linq;
 using System;
 using Serilog;
+using Dapper.Contrib.Extensions;
 
 namespace CricApp.Controllers
 {
@@ -21,9 +22,9 @@ namespace CricApp.Controllers
             _configuration = Configuration;
         }
 
-        public ActionResult Players_Read([DataSourceRequest]DataSourceRequest request)
+        public ActionResult GetPlayers([DataSourceRequest]DataSourceRequest request)
         {
-            var sql = @"select Id, CricApiId as Pid, Name, Country, PlayingRole from Players";
+            var sql = @"select Id, CricApiId, Name, Country, PlayingRole from Players";
             var result = new List<PlayerViewModel>();
 
             try
@@ -37,11 +38,51 @@ namespace CricApp.Controllers
             }
             catch (Exception ex)
             {
-                Log.Error($"Players_Read(): {ex.Message}");
+                Log.Error($"GetPlayers(): {ex.Message}");
             }
 
             var dsResult = result.ToDataSourceResult(request);
             return Json(dsResult);
+        }
+
+        [HttpPost]
+        public ActionResult EditPlayer([DataSourceRequest] DataSourceRequest request, PlayerViewModel player)
+        {
+            if (ModelState.IsValid && player != null)
+            {
+                try
+                {
+                    using (var connection = new SqlConnection(_configuration["dbConnStr"]))
+                    {
+                        connection.Open();
+
+                        var playerToUpdate = connection.Get<PlayerViewModel>(player.Id);
+
+                        playerToUpdate.CricApiId = player.CricApiId;
+                        playerToUpdate.Name = player.Name;
+                        playerToUpdate.Country = player.Country;
+                        playerToUpdate.PlayingRole = player.PlayingRole;
+
+                        var success = connection.Update(playerToUpdate);
+
+                        if (success)
+                        {
+                            var result = new[] { playerToUpdate }.ToDataSourceResult(request, ModelState);
+                            return Json(result);
+                        }
+
+                        Log.Error($"EditPlayer(): update of record {player.Id} failed!");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log.Error($"EditPlayer(): {ex.Message}");
+                }
+            }
+
+            var res = new[] { player }.ToDataSourceResult(request, ModelState);
+
+            return Json(res);
         }
     }
 }
