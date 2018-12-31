@@ -58,6 +58,7 @@
                     .Name("player-grid")
                     .Columns(columns =>
                     {
+                        columns.Bound(p => p.Id).Filterable(false).Hidden();
                         columns.Bound(p => p.Pid).Filterable(false).Title("Player ID");
                         columns.Bound(p => p.Name);
                         columns.Bound(p => p.Country);

@@ -23,7 +23,7 @@ namespace CricApp.Controllers
 
         public ActionResult Players_Read([DataSourceRequest]DataSourceRequest request)
         {
-            var sql = @"select CricApiId as Pid, Name, Country, PlayingRole from Players";
+            var sql = @"select Id, CricApiId as Pid, Name, Country, PlayingRole from Players";
             var result = new List<PlayerViewModel>();
 
             try
